@@ -1,0 +1,15 @@
+main: com.theaetherserver.kits.Main
+name: SlimeKits
+version: 1.7
+author: PinkSlime
+description: Adds kits to the server.
+commands:
+    pvp:
+        description: SlimeKits commands.
+        usage: Used /pvp
+    slimekits:
+        description: SlimeKits configuration commands.
+        usage: Used /slimekits
+    stats:
+        description: Get player statistics
+        usage: Used /stats <player>
