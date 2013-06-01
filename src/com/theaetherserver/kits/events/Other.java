@@ -18,7 +18,6 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
-
 import com.theaetherserver.kits.Debug;
 import com.theaetherserver.kits.Main;
 import com.theaetherserver.kits.checkworld.CheckWorld;
@@ -148,7 +147,7 @@ public class Other implements Listener{
 
 	@EventHandler
 	public void drop(PlayerDropItemEvent e){
-		Player player = (Player) e.getPlayer();
+		Player player = e.getPlayer();
 		if(CheckWorld.check(player)){
 			if(Main.items.contains(e.getItemDrop().getItemStack().getType()) || Main.armour.contains(e.getItemDrop().getItemStack().getType())){
 				e.setCancelled(true);

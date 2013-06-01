@@ -4,19 +4,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
-import com.theaetherserver.kits.Main;
-
 public class DeathHandler {
-	@SuppressWarnings("unused")
-	private Main plugin;
-	public DeathHandler (Main plugin){
-		this.plugin = plugin;
-	}
 	
-	private static ChatColor blue = ChatColor.BLUE;
-	private static ChatColor gold = ChatColor.GOLD;
+	final static ChatColor blue = ChatColor.BLUE;
+	final static ChatColor gold = ChatColor.GOLD;
 	
-	public static String killstreakDeathMessage(Player dead, Player killer){
+	public static  String killstreakDeathMessage(Player dead, Player killer){
 		return gold + killer.getName() + blue + " has ended " + gold + dead.getName() + blue + "'s " + dead.getLevel() + " killstreak";
 	}
 	

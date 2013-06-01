@@ -64,6 +64,8 @@ public class ChatEvent implements Listener{
 				event.setFormat(ChatColor.GOLD + "[Thor] " + isRank(player) + ChatColor.BLUE + ": " + msg);
 			}else if(Main.playJumper.containsKey(name)){
 				event.setFormat(ChatColor.GOLD + "[Jumper] " + isRank(player) + ChatColor.BLUE + ": " + msg);
+			}else if(Main.playWizard.containsKey(name)){
+				event.setFormat(ChatColor.GOLD + "[Wizard] " + isRank(player) + ChatColor.BLUE + ": " + msg);
 			}else{
 				event.setFormat(ChatColor.GOLD + "[None] " + isRank(player) + ChatColor.BLUE + ": " + msg);
 			}

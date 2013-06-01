@@ -32,7 +32,7 @@ public class Config {
 			configFile.createNewFile();
 		
 		String[] worlds = {"worlds;#example_world"};
-		String[] kits = {"kits.archer.enabled;true", "kits.tank.enabled;true", "kits.turtle.enabled;true", "kits.grandpa.enabled;true", "kits.knight.enabled;true", "kits.creeper.enabled;true", "kits.ninja.enabled;true", "kits.wither.enabled;true", "kits.stomper.enabled;true", "kits.angel.enabled;true", "kits.soldier.enabled;true", "kits.spider.enabled;true", "kits.trickster.enabled;true", "kits.blaze.enabled;true", "kits.dwarf.enabled;true", "kits.fisherman.enabled;true", "kits.cannon.enabled;true", "kits.poseidon.enabled;true", "kits.thor.enabled;true", "kits.jumper.enabled;true"};
+		String[] kits = {"kits.archer.enabled;true", "kits.tank.enabled;true", "kits.turtle.enabled;true", "kits.grandpa.enabled;true", "kits.knight.enabled;true", "kits.creeper.enabled;true", "kits.ninja.enabled;true", "kits.wither.enabled;true", "kits.stomper.enabled;true", "kits.angel.enabled;true", "kits.soldier.enabled;true", "kits.spider.enabled;true", "kits.trickster.enabled;true", "kits.blaze.enabled;true", "kits.dwarf.enabled;true", "kits.fisherman.enabled;true", "kits.cannon.enabled;true", "kits.poseidon.enabled;true", "kits.thor.enabled;true", "kits.jumper.enabled;true", "kits.wizard.enabled;true", "kits.flamethrower.enabled;true"};
 		String[] ranks = {"rank.admin;Pink__Slime", "rank.admin;Black__Slime", "rank.mod;White__Slime"};
 		String[] debug = {"debug;false"};
 		

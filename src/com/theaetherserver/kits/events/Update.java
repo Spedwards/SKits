@@ -20,7 +20,9 @@ public class Update implements Listener{
 	public void updateInventory(PlayerMoveEvent event){
 		Player player = event.getPlayer();
 		if(CheckWorld.check(player)){
-			player.updateInventory();
+			if(!Main.playArcher.containsKey(player.getName())){
+				player.updateInventory();
+			}
 		}
 	}
 	

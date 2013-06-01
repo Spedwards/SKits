@@ -8,22 +8,24 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import com.theaetherserver.kits.Debug;
-import com.theaetherserver.kits.Main;
 import com.theaetherserver.kits.checkworld.CheckWorld;
 import com.theaetherserver.kits.events.killstreaks.KillstreakManagement;
 
 public class DeathEvent implements Listener{
-	@SuppressWarnings("unused")
-	private Main plugin;
-	public DeathEvent(Main plugin){
-		this.plugin = plugin;
-	}
 
 	@EventHandler
 	public void deathEvent(PlayerDeathEvent event){
 		Player player = (Player) event.getEntity();
 		if(CheckWorld.check(player)){
 			Debug.tryDebug(player.getName() + " died");
+			if(player.getKiller() == null){
+				Debug.tryDebug(player.getName() + "'s killer was null");
+				return;
+			}
+			if(!(player.getKiller() instanceof Player)){
+				Debug.tryDebug(player.getName() + "'s killer wasn't a player");
+				return;
+			}
 			Player killer = player.getKiller();
 
 			EntityDamageEvent lastDamage = player.getLastDamageCause();
@@ -33,8 +35,7 @@ public class DeathEvent implements Listener{
 			
 			if(KillstreakManagement.isKillstreak(player)){
 				event.setDeathMessage(DeathHandler.killstreakDeathMessage(player, killer));
-			}else{
-				event.setDeathMessage(DeathHandler.regularDeathMessage(player, killer));
+				return;
 			}
 			
 			DamageCause cause = lastDamage.getCause();

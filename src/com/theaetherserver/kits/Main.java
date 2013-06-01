@@ -22,14 +22,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.theaetherserver.kits.configuration.Config;
 import com.theaetherserver.kits.configuration.PlayerStatistics;
-import com.theaetherserver.kits.events.ChatEvent;
-import com.theaetherserver.kits.events.KitEvents;
-import com.theaetherserver.kits.events.Other;
-import com.theaetherserver.kits.events.PotionMove;
-import com.theaetherserver.kits.events.ResistanceEvent;
-import com.theaetherserver.kits.events.SignCreate;
-import com.theaetherserver.kits.events.Stomper;
-import com.theaetherserver.kits.events.Update;
+import com.theaetherserver.kits.events.*;
 import com.theaetherserver.kits.events.death.DeathEvent;
 import com.theaetherserver.kits.events.killstreaks.HitKillstreakLevel;
 import com.theaetherserver.kits.events.killstreaks.UseKillstreakListener;
@@ -59,6 +52,8 @@ public class Main extends JavaPlugin implements Listener{
 	public final static HashMap<String, String> playAngel = new HashMap<String, String>();
 	public final static HashMap<String, String> playSoldier = new HashMap<String, String>();
 	public final static HashMap<String, String> playJumper = new HashMap<String, String>();
+	public final static HashMap<String, String> playWizard = new HashMap<String, String>();
+	public final static HashMap<String, String> playFlamethrower = new HashMap<String, String>();
 	
 	public final static HashMap<String, String> buildToggle = new HashMap<String, String>();
 	
@@ -88,13 +83,14 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new ResistanceEvent(this), this);
 		pm.registerEvents(new Update(this), this);
 		pm.registerEvents(new ChatEvent(this), this);
+		pm.registerEvents(new WizardEvents(), this);
 		
 		// Main.Events.Killstreaks package
 		pm.registerEvents(new HitKillstreakLevel(this), this);
 		pm.registerEvents(new UseKillstreakListener(this), this);
 		
 		// Main.Events.Death package
-		pm.registerEvents(new DeathEvent(this), this);
+		pm.registerEvents(new DeathEvent(), this);
 		
 		// Commands
 		getCommand("pvp").setExecutor(new Commands());

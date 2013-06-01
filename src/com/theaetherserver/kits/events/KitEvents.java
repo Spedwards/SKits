@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
@@ -290,6 +291,19 @@ public class KitEvents implements Listener{
 							Vector height = new Vector(0, 2, 0);
 							length.add(height);
 							p.setVelocity(length);
+						}
+					}
+				}
+			}else if(p.getItemInHand() != null && p.getItemInHand().getType().equals(Material.FLINT_AND_STEEL)){
+				if(Main.playFlamethrower.containsKey(p.getName())){
+					if(p.getInventory().contains(Material.COAL)){
+						FallingBlock fire = p.getWorld().spawnFallingBlock(p.getEyeLocation().add(p.getLocation().getDirection().normalize()), Material.FIRE, (byte)0);
+						fire.setVelocity(p.getLocation().getDirection().multiply(2));
+						Debug.tryDebug(p.getName() + " shot fire as Flamethrower");
+						if(p.getInventory().contains(Material.COAL, 1)){
+							p.getInventory().remove(Material.COAL);
+						}else{
+							InventoryMethods.remove(p.getInventory(), Material.COAL, 1, (short)0);
 						}
 					}
 				}

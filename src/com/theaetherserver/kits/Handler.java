@@ -98,6 +98,10 @@ public class Handler{
         	Soldier.selSoldier(player);
         }else if(name.equalsIgnoreCase(ChatColor.GREEN + "Jumper")){
         	Jumper.selJumper(player);
+        }else if(name.equalsIgnoreCase(ChatColor.BLUE + "Wizard")){
+        	Wizard.selWizard(player);
+        }else if(name.equalsIgnoreCase(ChatColor.RED + "Flamethrower")){
+        	Flamethrower.selFlamethrower(player);
         }else if(name.equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Back")){
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                 

@@ -1,6 +1,6 @@
 main: com.theaetherserver.kits.Main
 name: SlimeKits
-version: 1.7
+version: 1.9
 author: PinkSlime
 description: Adds kits to the server.
 commands:

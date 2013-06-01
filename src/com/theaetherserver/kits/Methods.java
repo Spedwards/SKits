@@ -1,6 +1,8 @@
 package com.theaetherserver.kits;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -265,6 +267,23 @@ public class Methods {
 		thorLore.add(ChatColor.YELLOW + "Donator Kit: " + ChatColor.AQUA + "Diamond");
 		thorMeta.setLore(thorLore);
 		thor.setItemMeta(thorMeta);
+		
+		ItemStack wizard = new ItemStack(Material.LEATHER_HELMET);
+		LeatherArmorMeta wizardMeta = (LeatherArmorMeta) wizard.getItemMeta();
+		wizardMeta.setDisplayName(ChatColor.BLUE + "Wizard");
+		wizardMeta.setColor(Color.BLUE);
+		ArrayList<String> wizardLore = new ArrayList<String>();
+		wizardLore.add(ChatColor.YELLOW + "Donator Kit: " + ChatColor.AQUA + "Diamond");
+		wizardMeta.setLore(wizardLore);
+		wizard.setItemMeta(wizardMeta);
+		
+		ItemStack flame = new ItemStack(Material.FIRE);
+		ItemMeta flameMeta = flame.getItemMeta();
+		flameMeta.setDisplayName(ChatColor.RED + "Flamethrower");
+		List<String> flameLore = new ArrayList<String>();
+		flameLore.add(ChatColor.YELLOW + "Donator Kit: " + ChatColor.AQUA + "Diamond");
+		flameMeta.setLore(flameLore);
+		flame.setItemMeta(flameMeta);
 
 		ItemStack back = new ItemStack(Material.CHEST);
 		ItemMeta backMeta = back.getItemMeta();
@@ -333,6 +352,12 @@ public class Methods {
 		}
 		if(Main.inst().getConfig().getBoolean("kits.thor.enabled")){
 			select.setItem(select.firstEmpty(), thor);
+		}
+		if(Main.inst().getConfig().getBoolean("kits.wizard.enabled")){
+			select.setItem(select.firstEmpty(), wizard);
+		}
+		if(Main.inst().getConfig().getBoolean("kits.flamethrower.enabled")){
+			select.setItem(select.firstEmpty(), flame);
 		}
 		select.setItem(26, back);
 		Debug.tryDebug("Select menu created");
@@ -409,6 +434,8 @@ public class Methods {
 		Main.playAngel.remove(player.getName());
 		Main.playSoldier.remove(player.getName());
 		Main.playJumper.remove(player.getName());
+		Main.playWizard.remove(player.getName());
+		Main.playFlamethrower.remove(player.getName());
 	}
 
 	public static void reSoup(Player player){
@@ -455,6 +482,10 @@ public class Methods {
 		Main.items.add(Material.STICK);
 		Main.items.add(Material.SLIME_BALL);
 		Main.items.add(Material.DIAMOND_BOOTS);
+		Main.items.add(Material.FLINT_AND_STEEL);
+		
+		// Other
+		Main.items.add(Material.COAL);
 
 		// Killstreaks
 		Main.items.add(Material.POTION);

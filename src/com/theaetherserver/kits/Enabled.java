@@ -121,6 +121,11 @@ public class Enabled {
 		}else{
 			enabledKits.add(disabled + "Jumper" + base);
 		}
+		if(Main.inst().getConfig().getBoolean("kits.wizard.enabled")){
+			enabledKits.add(enabled + "Wizard" + base);
+		}else{
+			enabledKits.add(disabled + "Wizard" + base);
+		}
 	}
 	
 	public static List<String> returnEnabledKits(){
