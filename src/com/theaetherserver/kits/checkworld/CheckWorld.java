@@ -2,6 +2,7 @@ package com.theaetherserver.kits.checkworld;
 
 import java.util.List;
 
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -27,6 +28,14 @@ public class CheckWorld {
 	public static boolean check(Entity e){
 		if(worlds.contains(e.getWorld().getName())){
 			Debug.tryDebug(e + " is in world list.");
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public static boolean check(Block b){
+		if(worlds.contains(b.getWorld().getName())){
 			return true;
 		}else{
 			return false;

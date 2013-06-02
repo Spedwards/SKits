@@ -192,6 +192,10 @@ public class KitEvents implements Listener{
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 0));
 			}
+		}else if(Main.playTank.containsKey(player.getName())){
+			if(player.isSprinting()){
+				player.setSprinting(false);
+			}
 		}
 	}
 	
@@ -301,8 +305,6 @@ public class KitEvents implements Listener{
 						fire.setVelocity(p.getLocation().getDirection().multiply(2));
 						Debug.tryDebug(p.getName() + " shot fire as Flamethrower");
 						if(p.getInventory().contains(Material.COAL, 1)){
-							p.getInventory().remove(Material.COAL);
-						}else{
 							InventoryMethods.remove(p.getInventory(), Material.COAL, 1, (short)0);
 						}
 					}
@@ -341,6 +343,5 @@ public class KitEvents implements Listener{
 			}
 		}
 	}
-	
 
 }

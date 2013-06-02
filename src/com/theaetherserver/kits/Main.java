@@ -128,7 +128,6 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public void onDisable(){
 		instance = null;
-		Debug.tryDebug("Disabled");
 	}
 	
 	public static Main inst(){

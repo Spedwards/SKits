@@ -5,13 +5,19 @@ import net.minecraft.server.v1_5_R3.Packet205ClientCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockBurnEvent;
+import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.block.BlockIgniteEvent.IgniteCause;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
@@ -176,6 +182,62 @@ public class Other implements Listener{
 			if(!Main.buildToggle.containsKey(player.getName())){
 				e.setCancelled(true);
 				player.sendMessage(ChatColor.RED + "You cannot break here!");
+			}
+		}
+	}
+	
+	@EventHandler
+	public void blockSpread(BlockSpreadEvent e){
+		if(CheckWorld.check(e.getSource())){
+			if(e.getSource().getType().equals(Material.FIRE)){
+				e.getSource().setType(Material.AIR);
+				Debug.tryDebug("Fire stopped in BlockSpreadEvent / Fire changed to Air.");
+				e.setCancelled(true);
+			}
+		}
+	}
+	
+	@EventHandler
+	public void blockBurn(BlockBurnEvent e){
+		if(CheckWorld.check(e.getBlock())){
+			Debug.tryDebug("Fire stopped in BlockBurnEvent");
+			e.setCancelled(true);
+		}
+	}
+	
+	@EventHandler
+	public void blockIgnite(final BlockIgniteEvent e){
+		if(CheckWorld.check(e.getBlock())){
+			if(e.getCause().equals(IgniteCause.SPREAD)){
+				Debug.tryDebug("Fire stopped in BlockIgniteEvent");
+				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.inst(), new Runnable(){
+					
+					@Override
+					public void run(){
+						e.setCancelled(true);
+					}
+					
+				}, 5L);
+				
+			}
+		}
+	}
+	
+	@EventHandler
+	public void blockFromTo(final BlockFromToEvent e){
+		if(CheckWorld.check(e.getToBlock())){
+			if(e.getToBlock().getType().equals(Material.FIRE)){
+				Debug.tryDebug("Fire stopped in BlockFromToEvent");
+				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.inst(), new Runnable(){
+					
+					@Override
+					public void run(){
+						e.setCancelled(true);
+					}
+					
+				}, 5L);
+				
+				
 			}
 		}
 	}

@@ -11,8 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.BookMeta;
 
-import com.theaetherserver.kits.checkworld.CheckWorld;
-
 public class Commands implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -60,12 +58,6 @@ public class Commands implements CommandExecutor {
 							Debug.tryDebug("Build enabled for " + player.getName());
 							return true;
 						}
-					}else if(args[0].equalsIgnoreCase("worlds")){
-						player.sendMessage(ChatColor.BLUE + "Worlds: " + CheckWorld.worlds);
-						return true;
-					}else if(args[0].equalsIgnoreCase("enabledkits")){
-						player.sendMessage(ChatColor.BLUE + "Enabled Kits: " + Enabled.enabledKits);
-						return true;
 					}
 				}else{
 					player.sendMessage(ChatColor.RED + "Used: /pvp [choose:info:toggle]");

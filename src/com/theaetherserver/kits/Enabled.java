@@ -14,7 +14,7 @@ public class Enabled {
 	
 	private static ChatColor enabled = ChatColor.GREEN;
 	private static ChatColor disabled = ChatColor.RED;
-	private static ChatColor base = ChatColor.BLUE;
+	private static ChatColor base = ChatColor.GOLD;
 	
 	public static final List<String> enabledKits = new ArrayList<String>();
 	
@@ -26,10 +26,8 @@ public class Enabled {
 		}
 		if(Main.inst().getConfig().getBoolean("kits.tank.enabled")){
 			enabledKits.add(enabled + "Tank" + base);
-			System.out.println(Main.inst().getConfig().getBoolean("kits.tank.enabled"));
 		}else{
 			enabledKits.add(disabled + "Tank" + base);
-			System.out.println(Main.inst().getConfig().getBoolean("kits.tank.enabled"));
 		}
 		if(Main.inst().getConfig().getBoolean("kits.grandpa.enabled")){
 			enabledKits.add(enabled + "Grandpa" + base);
